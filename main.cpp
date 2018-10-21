@@ -397,17 +397,17 @@ extern "C" void* ThreadStats(void*) {
   return nullptr;
 }
 
-static const string mainnet_seeds[] = {"dnsseed.bluematt.me", "bitseed.xf2.org", "dnsseed.bitcoin.dashjr.org", "seed.bitcoin.sipa.be", ""};
-static const string testnet_seeds[] = {"testnet-seed.alexykot.me",
-                                       "testnet-seed.bitcoin.petertodd.org",
-                                       "testnet-seed.bluematt.me",
-                                       "testnet-seed.bitcoin.schildbach.de",
-                                       ""};
+static const string mainnet_seeds[] = {
+  "node-01.nethash.io", "node-02.nethash.io", "node-03.nethash.io", "node-04.nethash.io", "node-05.nethash.io", 
+  "node-06.nethash.io", "node-07.nethash.io", "node-08.nethash.io", "node-09.nethash.io", "node-01.nethash.io", ""};
+static const string testnet_seeds[] = {
+    "test-01.nethash.io", "test-02.nethash.io", "test-03.nethash.io", "test-04.nethash.io", "test-05.nethash.io", 
+  "test-06.nethash.io", "test-07.nethash.io", "test-08.nethash.io", "test-09.nethash.io", "test-01.nethash.io", ""};
 static const string *seeds = mainnet_seeds;
 
 extern "C" void* ThreadSeeder(void*) {
   if (!fTestNet){
-    db.Add(CService("kjy2eqzk4zwi5zd3.onion", 8333), true);
+    db.Add(CService("kjy2eqzk4zwi5zd3.onion", 10417), true);
   }
   do {
     for (int i=0; seeds[i] != ""; i++) {
@@ -459,10 +459,10 @@ int main(int argc, char **argv) {
   bool fDNS = true;
   if (opts.fUseTestNet) {
       printf("Using testnet.\n");
-      pchMessageStart[0] = 0x0b;
-      pchMessageStart[1] = 0x11;
-      pchMessageStart[2] = 0x09;
-      pchMessageStart[3] = 0x07;
+      pchMessageStart[0] = 0x8f;
+      pchMessageStart[1] = 0xaf;
+      pchMessageStart[2] = 0xae;
+      pchMessageStart[3] = 0xac;
       seeds = testnet_seeds;
       fTestNet = true;
   }
